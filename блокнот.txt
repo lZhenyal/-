@@ -1,0 +1,50 @@
+        public string Id { get; set; }
+        public string Name_Zakazchik { get; set; }
+        public string Appliances { get; set; }
+        public string Description_problem { get; set; }
+        public string Name_Mastera { get; set; }
+        public DateTime Create_Request { get; set; }
+        public string status { get; set; }
+
+Айди 
+Имя заказчика
+Фамилия заказчика
+Название быт техники
+Описание проблемы 
+Имя мастера 
+Фамилия Мастера
+Дата заявки 
+Статус
+
+создать файл «Веб-приложение ASP.NET Core (Майкрософт)
+создать папку models (создаем в ней класс Request)
+написать public string Id { get; set;} и тд 
+ПКМ на pages добавляем папку с названием как и класс, ток с «S» (RequestS)
+Теперь в папке Requests создаем шаблонный элемент «Razor Pages на основе CRUD» 
+дальше изи шаг курим бамбук
+Средства  - диспетчер пакетов NuGet - Консоль диспетчера пакетов и пишем “add-migration initial”, затем “update-database”
+дальше шаг чтобы база данных сразу открывалась там где нужно 
+вставляешь код Details после row:
+
+(код для HIML файлов для добавления нужных тебе строк)
+
+<dt class="col-sm-2">
+    Номер пользователя
+</dt>
+<dd class="col-sm-10">
+    @Model.Request.Id
+</dd>
+
+Переходим в Program.cs и вставляем код перед “app.Run();”:
+(перенаправление на твои страницы при запуске веб приложения
+вместо Users пишешь название своей папки)
+
+app.MapGet("/", (context) =>
+{
+    context.Response.Redirect("/Requests");
+    return Task.CompletedTask;
+});
+
+
+Поменять название таблицы в Index и поменять название на Requests_of_repair
+
